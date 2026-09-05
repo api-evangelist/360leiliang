@@ -1,16 +1,34 @@
 aid: 360leiliang
 name: 360leiliang
-description: '360leiliang is a company surfaced via the API Evangelist harvest backlog (source: secondary-market)
-  and added to the network as a stub for full-pipeline profiling.'
+description: 360leiliang (辅布司 / "Fubusi") is a Chinese S2B self-operated business-to-business e-commerce platform
+  for textile trim and accessories — principally lace, embroidery and knitted narrow fabrics in nylon, polyester,
+  rayon and cotton — sold by the yard to garment manufacturers. The storefront and companion mobile app are owned
+  and operated by 福建东南西北网络科技有限公司 (Fujian Dongnanxibei Network Technology Co., Ltd.) of Mawei District, Fuzhou, Fujian,
+  China; the company was founded in 2014. 360leiliang.com lists per-pattern finished-goods and greige pricing, image-based
+  product lookup, stock and made-to-order availability, and Alipay/WeChat checkout. As of this profile it publishes
+  no public developer program, API documentation, machine-readable contract or SDK; api.360leiliang.com is the private
+  backend for its own clients. It consumes third-party APIs — WeChat login, Alipay, JPush, Vivo/Huawei push — rather
+  than producing one.
 url: https://raw.githubusercontent.com/api-evangelist/360leiliang/refs/heads/main/apis.yml
 x-type: company
 x-source: harvest:secondary-market
-x-tier: stub
-x-tier-reason: harvest
+x-operator: 福建东南西北网络科技有限公司 (Fujian Dongnanxibei Network Technology Co., Ltd.)
+x-tier: profiled
+x-tier-reason: 'enrichment pass 2026-09-05: full contract discovery run on four hosts, no public API surface found'
 specificationVersion: '0.20'
 created: '2026-09-05'
 modified: '2026-09-05'
+image: https://www.360leiliang.com/statics/css/images/logo.png
 tags:
+- Textiles
+- Lace
+- Fabric
+- Apparel
+- Manufacturing
+- B2B Marketplace
+- E-Commerce
+- Supply Chain
+- China
 - Company
 apis: []
 maintainers:
@@ -19,5 +37,43 @@ maintainers:
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: LLMsTxt
+  url: llms/360leiliang-llms.txt
+- type: DomainSecurity
+  url: security/360leiliang-domain-security.yml
 - type: Website
-  url: https://equityzen.com/company/360leiliang
+  url: https://www.360leiliang.com/
+- type: TermsOfService
+  url: https://www.360leiliang.com/userAgreement.html
+- type: PrivacyPolicy
+  url: https://www.360leiliang.com/privacyPolicy.html
+x-enrichment:
+  date: '2026-09-05'
+  status: minimal
+  artifacts_added: 3
+  pass: local-v3
+x-coverage:
+  state: none
+  reason: no-developer-program
+  detail: '360leiliang runs a lace and textile-trim storefront, not a platform: the site has no /developers,
+    /docs or API-reference path (its 200s on /docs, /api-docs, /redoc and /graphql all return the 102,881-byte
+    storefront homepage verbatim), GitHub user and repository search for the name return zero results, no
+    registry carries a client library, and api.360leiliang.com — the private backend for its own web and mobile
+    clients, fronted by an Aliyun ALB and identifying itself as "EZmvc 1.1.9" — 404s every OpenAPI, Swagger,
+    GraphQL and /.well-known/ path probed.'
+  evidence:
+  - url: https://api.360leiliang.com/openapi.json
+    status: 404
+  - url: https://api.360leiliang.com/v3/api-docs
+    status: 404
+  - url: https://api.360leiliang.com/swagger-ui.html
+    status: 404
+  - url: https://www.360leiliang.com/.well-known/api-catalog
+    status: 404
+  - url: https://www.360leiliang.com/llms.txt
+    status: 404
+  - url: https://api.github.com/search/repositories?q=360leiliang
+    status: 200
+  - url: https://www.360leiliang.com/
+    status: 200
+  checked: '2026-09-05'
